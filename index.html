@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link href="./chart.css" type="text/css" rel="stylesheet">
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <title>Chart</title>
+</head>
+
+<body>
+    <main style="display: flex; justify-content: space-between; padding: 2%;">
+        <div class="chart" id="ch">
+            <div class="chart-inner"></div>
+            <span id="load">15</span>
+        </div>
+        <div class="chart-wrapper">
+            <div class="chart-1" id="ch1">
+                <div class="chart-inner"></div>
+                <span id="load1"><b>15</b><i>km/h</i></span>
+            </div>
+        </div>
+        <div class="chart-2" id="ch2">
+            <div class="chart-inner"></div>
+            <span id="load2"><b>15</b><i>km/h</i></span>
+        </div>
+    </main>
+    <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
+        <div>
+            <input type="range" min="0" max="100" value="15" step="0.10" id="range">
+        </div>
+        <div>
+            <input type="range" min="0" max="100" value="15" step="0.10" id="range1">
+        </div>
+        <div>
+            <input type="range" min="0" max="100" value="15" step="0.10" id="range2">
+        </div>
+    </div>
+    <script>
+        $(function() {
+            const maxSpeed = 320;
+
+            const doc = document;
+
+            let range = doc.getElementById('range');
+            let chart = doc.querySelector('.chart');
+
+            const bg = 'conic-gradient(from 0deg at 50% 50%, {{color}} {{p}}, transparent 0%)';
+
+            range.addEventListener('input', function(e) {
+                e.preventDefault();
+
+                let percentage = range.value;
+
+                let color = '#fff';
+
+                if (percentage > 80) {
+                    color = 'rgba(255, 0, 0, 1)';
+                }
+
+                $('#ch > .chart-inner').css({
+                    background: bg.replace('{{p}}', `${percentage}%`).replace('{{color}}', color)
+                });
+
+                let load = Math.ceil((maxSpeed * Math.ceil(percentage)) / 100);
+
+                $('#ch > #load').text(`${load}`);
+            });
+        });
+
+        $(function() {
+            const charts = $('div[class^="chart"]');
+
+            const maxSpeed = 320;
+
+            const doc = document;
+
+            const chartId = '#ch1';
+            const rangeId = '#range1';
+            const loadId = '#load1';
+
+            let range = $(rangeId);
+            let chart = $(chartId);
+
+            const bg = 'conic-gradient(from 0deg at 50% 50%, {{color}} {{p}}, transparent 0%)';
+
+            range.on('input', function() {
+                let percentage = range.val();
+
+                let color = '#fff';
+
+                if (percentage > 80) {
+                    color = '#FF0104';
+                }
+
+                $(chartId + '> .chart-inner').css({
+                    background: bg.replace('{{p}}', `${percentage}%`).replace('{{color}}', color)
+                });
+
+                let load = Math.ceil((maxSpeed * Math.ceil(percentage)) / 100);
+
+                $(loadId + '> b').text(`${load}`);
+            });
+        });
+    </script>
+</body>
+
+</html>

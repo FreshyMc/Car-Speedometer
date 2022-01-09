@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --width: 300px;
+    --percent: 15%;
+    --b: 20px;
+    --b: 22px;
+    --main-c: #fff;
+    --secondary-c: #FF0104;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.chart,
+.chart-1,
+.chart-2 {
+    position: relative;
+    aspect-ratio: 1;
+    width: var(--width);
+    height: var(--width);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    border-radius: 50%;
+    text-shadow: 0 0 2.5px rgba(0, 0, 0, .25);
+}
+
+.chart {
+    background: rgb(0, 199, 255);
+    background: radial-gradient(circle, rgba(0, 199, 255, 1) 45%, rgba(137, 63, 251, 1) 100%);
+    box-shadow: 0 0 9px 2.5px rgba(0, 0, 0, .25);
+}
+
+.chart-1 {
+    background: radial-gradient(circle, #212121 45%, #616161 100%);
+    box-shadow: 0 0 9px 2.5px rgba(0, 0, 0, .25);
+}
+
+.chart-2 {
+    background: rgb(0, 199, 255);
+    background: radial-gradient(circle, rgba(0, 199, 255, 1) 45%, rgba(137, 63, 251, 1) 100%);
+    box-shadow: 0 0 9px 2.5px rgba(0, 0, 0, .25);
+}
+
+.chart span,
+.chart-2 span {
+    display: flex;
+    flex-direction: column;
+    width: calc(var(--width) * .65);
+    height: calc(var(--width) * .65);
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 3rem;
+}
+
+.chart-1 span {
+    display: flex;
+    flex-direction: column;
+    width: calc(var(--width) * .65);
+    height: calc(var(--width) * .65);
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 3rem;
+}
+
+.chart-1 i,
+.chart-2 i {
+    font-size: 1.8rem;
+}
+
+.chart span {
+    color: rgb(0, 199, 255);
+    border-radius: 50%;
+    background-color: #fff;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .45);
+    box-shadow: 0 0 9px 2.5px rgba(0, 0, 0, .25);
+}
+
+.chart-1 span {
+    color: #fff;
+    border-radius: 50%;
+    background-color: #fff;
+    background: radial-gradient(ellipse at center, #333 68%, #FF0104 0%);
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .45);
+    box-shadow: 0 0 9px 2.5px rgba(0, 0, 0, .25);
+}
+
+.chart-2 span {
+    color: #333;
+    border-radius: 50%;
+    background-color: #fff;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .45);
+    box-shadow: 0 0 9px 2.5px rgba(0, 0, 0, .25);
+}
+
+.chart-inner {
+    position: absolute;
+    inset: 0;
+    margin: 5px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg at 50% 50%, var(--main-c) var(--percent), transparent 0%);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+    mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+    transform: rotate(180deg);
+}
+
+.chart-1 .chart-inner {
+    margin: 10px;
+    background: conic-gradient(from 0deg at 50% 50%, var(--main-c) var(--percent), transparent 0%);
+    transform: rotate(225deg);
+}
+
+.chart-wrapper {
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(to bottom, #FF0104, #CB3066);
+    box-shadow: 0 0 9px 2.5px rgba(0, 0, 0, .45);
+}
